@@ -61,8 +61,8 @@ def test_recommend_problem(request):
         # 유저티어정보
         user_tier_data = bj_user_data.tier
         # 유저레벨에적합한 레벨문제 1차 필터링
-        min_tier = min(user_tier_data-5,1)
-        max_tier = max(user_tier_data+2,30)
+        min_tier = max(user_tier_data-5,1)
+        max_tier = min(user_tier_data+2,30)
         first_filtered_problems_strong = Problem.objects.filter(problem_level__range=[user_tier_data,max_tier])
         if user_tier_data > 2:
             first_filtered_problems_weak = Problem.objects.filter(problem_level__range=[min_tier, user_tier_data])
@@ -167,7 +167,10 @@ def test_recommend_problem(request):
                 break
         # 유사한 다른 사용자의 solved_problem_history_id 가져오기
         similar_user_ids = [bj_id for bj_id in bj_ids_in_cluster if bj_id != input_bj_id]
-        similar_user_id = sample(similar_user_ids,1)
+        if len(similar_user_ids) < 1:
+          pass
+        else:
+          similar_user_id = sample(similar_user_ids,1)
         # 중복되지 않는 problem 레코드 찾기
         # selected_user_id = User.objects.get(solved_ac_id = similar_user_id).user_id
         distinct_problem_ids = set()
