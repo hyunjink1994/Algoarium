@@ -1,7 +1,7 @@
 // StompJs.Client 객체를 생성하고 웹소켓 서버의 URL을 설정합니다.
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://192.168.100.169:8080/websocket'
-//    brokerURL: 'ws://j9d204.p.ssafy.io:8090/websocket'
+//    brokerURL: 'ws://192.168.100.169:8080/websocket'
+    brokerURL: 'ws://j9d204.p.ssafy.io:8090/websocket'
 });
 
 // 현재 채널 ID

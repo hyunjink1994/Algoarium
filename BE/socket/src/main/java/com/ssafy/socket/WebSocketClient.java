@@ -277,6 +277,7 @@ public class WebSocketClient {
                             @Override
                             protected Void doInBackground() throws Exception {
 //                                String url = "ws://192.168.100.169:8080/websocket";
+//                                String url = "ws://192.168.100.169:8090/websocket";
                                 String url = "ws://j9d204.p.ssafy.io:8090//websocket";
 
                                 stompClient = new WebSocketStompClient(new StandardWebSocketClient());

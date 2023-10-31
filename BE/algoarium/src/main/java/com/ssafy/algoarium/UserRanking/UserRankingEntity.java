@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,7 @@ public class UserRankingEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_ranking_id", nullable = false)
 	private Long userRankingId;
 
 	@Column(name = "score" , nullable = false)
@@ -33,8 +35,17 @@ public class UserRankingEntity {
 	@Column(name = "ranking", nullable = false)
 	private Integer ranking;
 
-	//보강 필요
 	@OneToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id") // 연관되는 컬럼 지정
 	private UserEntity user;
+
+
+
+	@Builder
+	public UserRankingEntity(int score, int tier, int ranking, UserEntity user){
+		this.score = score;
+		this.tier = tier;
+		this.ranking = ranking;
+		this.user = user;
+	}
 }

@@ -14,7 +14,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -24,21 +24,27 @@ public class UserStatusEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long user_status_id;
+	@Column(name = "user_status_id",nullable = false)
+	private long userStatusId;
 
+	@Setter
 	//enum class 만들어서 처리
 	@Column(name =  "wis" , length = 50, nullable = false)
 	private int userStatus1 = 0;
 
+	@Setter
 	@Column(name =  "con" , length = 50, nullable = false)
 	private int userStatus2 = 0;
 
+	@Setter
 	@Column(name =  "str" , length = 50, nullable = false)
 	private int userStatus3 = 0;
 
+	@Setter
 	@Column(name =  "luk" , length = 50, nullable = false)
 	private int userStatus4 = 0;
 
+	@Setter
 	@Column(name =  "sma" , length = 50, nullable = false)
 	private int userStatus5 = 0;
 
@@ -48,10 +54,10 @@ public class UserStatusEntity {
 	private UserEntity user;
 
 	@Builder
-	public UserStatusEntity(long user_status_id, int userStatus1, int userStatus2
+	public UserStatusEntity(long userStatusId, int userStatus1, int userStatus2
 		, int userStatus3, int userStatus4, int userStatus5 , UserEntity user){
 		this.user = user;
-		this.user_status_id = user_status_id;
+		this.userStatusId = userStatusId;
 		this.userStatus1 = userStatus1;
 		this.userStatus2 = userStatus2;
 		this.userStatus3 = userStatus3;

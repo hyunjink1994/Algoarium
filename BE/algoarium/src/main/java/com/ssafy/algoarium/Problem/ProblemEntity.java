@@ -20,19 +20,19 @@ public class ProblemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer problemId; // 유저의 고유한 식별자인 ID를 나타냅니다.
 
-    @Column(name = "problem_number", nullable = false, length = 20)
+    @Column(name = "problem_number", nullable = false, length = 1000)
     private Integer problemNumber; // 문제 번호를 나타냅니다.
 
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(name = "title", nullable = false, length = 1000)
     private String title; // 문제 제목을 나타냅니다.
 
-    @Column(name = "problem_tag", nullable = false, length = 100)
+    @Column(name = "problem_tag", nullable = false, length = 1000)
     private String problemTag; // 문제 태그를 나타냅니다.
 
-    @Column(name = "problem_level", nullable = false, length = 20)
+    @Column(name = "problem_level", nullable = false, length = 1000)
     private Integer problemLevel; // 문제의 난이도를 나타냅니다.
 
-    @Column(name = "solved_user_count", nullable = false, length = 20)
+    @Column(name = "solved_user_count", nullable = false, length = 1000)
     private Integer solvedUserCount; // 문제를 해결한 사용자 수를 나타냅니다.
 
     @Builder // Lombok을 사용하여 빌더 패턴을 생성하도록 지정합니다. 빌더 패턴은 객체를 생성할 때 각 필드를 일일이 설정하지 않고 더 간편하게 생성할 수 있게 해줍니다.

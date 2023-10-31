@@ -17,7 +17,7 @@ public class KakaoLoginService {
 
 	public KakaoOauthToken findKakaoToken(String code){
 
-		String callbackUrl = "http://localhost:8080/auth/kakao/callback";
+		String callbackUrl = "http://j9d204.p.ssafy.io:8090/auth/kakao/callback";
 		String codeUrl = "https://kauth.kakao.com/oauth/token";
 
 		RestTemplate rt = new RestTemplate();

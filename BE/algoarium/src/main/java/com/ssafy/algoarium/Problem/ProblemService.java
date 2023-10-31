@@ -18,18 +18,11 @@ public class ProblemService {
     private ProblemRepository problemRepository;
 
     @Transactional
-    public void fetchProblemsAndSaveToDatabase() {
+    public void fetchProblemsAndSaveToDatabase(Integer problem_number) {
         // 문제 조회 URL
         String apiUrl = "https://solved.ac/api/v3/problem/lookup?problemIds=";
-        for (int cnt = 1000; cnt <= 1499; cnt++) {
-            if (cnt != 1000 & cnt % 500 == 0){
-                try {
-                    Thread.sleep(600000); // 10분 대기
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
 
+        for (int cnt = problem_number; cnt <= problem_number + 500; cnt++) {
             // RestTemplate을 사용하여 API 호출
             RestTemplate restTemplate = new RestTemplate();
             String apiResponse = restTemplate.getForObject(apiUrl + cnt, String.class);
@@ -49,7 +42,9 @@ public class ProblemService {
                 problemRepository.save(problemEntity);
             }
         }
+
     }
+
 
     /**
      * API 응답을 DTO 리스트로 변환합니다.

@@ -11,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 public class UserDto {
     private long userId;
     private String kakaoId;
@@ -18,6 +19,8 @@ public class UserDto {
     private String profileImage;
     private int preTier;
     private String refreshToken;
+    private int tier;
+    private String solvedAcId;
 
     public static UserEntity toUserEntity(UserEntity userDTO) {
         return UserEntity.builder()
@@ -26,6 +29,7 @@ public class UserDto {
             .profileImage(userDTO.getProfileImage())
             .preTier(userDTO.getPreTier())
             .refreshToken(userDTO.getRefreshToken())
+            .solvedAcId(userDTO.getSolvedAcId())
             .build();
     }
 

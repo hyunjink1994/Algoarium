@@ -15,6 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import javax.inject.Inject
 
+private const val TAG = "Algo_StatusFragmentViewModel"
 sealed class StatusUIModel : UiAwareModel() {
     object Loading : StatusUIModel()
     data class Error(var error: String = "") : StatusUIModel()
@@ -27,7 +28,6 @@ sealed class LikeProblemsUIModel : UiAwareModel() {
     data class Success(val data: List<Problem>) : LikeProblemsUIModel()
 }
 
-private const val TAG = "StatusFragmentViewModel"
 @HiltViewModel
 class StatusFragmentViewModel @Inject constructor(
     contextProvider: CoroutineContextProvider,
